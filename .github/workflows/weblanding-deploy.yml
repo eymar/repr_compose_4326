@@ -1,0 +1,16 @@
+name: Deploy to Firebase Hosting [frontend]
+on: [ push, pull_request ]
+jobs:
+  WEBLANDING_DEPLOY:
+    if: ${{ contains(github.event.head_commit.message, '[WEB]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_B0TCREATOR }}'
+          projectId: ${{ secrets.GCLOUD_PROJECT_ID }}
+          entryPoint: webLanding
+          channelId: live
