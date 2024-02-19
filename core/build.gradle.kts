@@ -33,7 +33,8 @@ kotlin {
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
-                implementation(libs.coroutines.test) // comment this to make it work
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.0") // comment this to make it work
+                // implementation(libs.coroutines.test)
             }
         }
     }
