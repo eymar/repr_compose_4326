@@ -1,6 +1,6 @@
-import androidx.compose.runtime.Composable
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.TimeoutCancellationException
 
-fun test() {
+fun CoroutineScope.test(e: TimeoutCancellationException) {
 
 }

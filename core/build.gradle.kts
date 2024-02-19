@@ -6,10 +6,6 @@ import org.jetbrains.compose.compose
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.compose)
-    alias(libs.plugins.kotlin.serialization)
-//    kotlin("native.cocoapods")
-    id("kotlinx-atomicfu")
 }
 
 
@@ -28,30 +24,16 @@ kotlin {
         nodejs()
     }
 
-    wasmJs(){
-        browser()
-    }
-
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(compose.runtime)
-                implementation(compose.material3)
-                implementation(compose.materialIconsExtended)
-                implementation(compose.ui)
-                implementation(compose("org.jetbrains.compose.ui:ui-util"))
-                implementation(compose.foundation)
-                implementation(libs.serialization)
-                implementation(libs.datetime)
-//                implementation(libs.coroutines.core)
-                implementation(libs.koin.core)
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
             }
         }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
-                implementation(libs.coroutines.test)
-                implementation(libs.ktor.client.test)
+                implementation(libs.coroutines.test) // comment this to make it work
             }
         }
     }
